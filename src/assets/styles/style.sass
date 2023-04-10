@@ -1,0 +1,445 @@
+// Import
+
+@import "vars.sass"
+
+// Box-sizing
+
+*
+	box-sizing: border-box
+	outline: none
+
+// Defaults
+
+body
+	font-family: 'Roboto', sans-serif
+	font-size: 14px
+	font-weight: 400
+	color: $black
+	background-color: #F4F4F4
+	overflow-x: hidden
+
+h1, h2, h3, h4, h5, h6, p
+	margin: 0
+	padding: 0
+
+a
+	color: $black
+	outline: none
+	text-decoration: none
+
+ul
+	margin: 0
+	padding: 0
+
+li
+	list-style: none
+
+img
+	display: block
+	max-width: 100%
+	height: auto
+
+textarea, input[type="text"], input[type="button"], input[type="submit"]
+	-webkit-appearance: none
+	border-radius: 0
+
+// Auxiliary classes
+
+.overflow-hidden
+	overflow-y: hidden
+
+.pagination
+	display: flex
+	justify-content: center
+	&__item
+		padding: 7px 12px
+		color: $black
+		font-size: 17px
+		background-color: $white
+		border: 1px solid transparent
+		cursor: pointer
+		transition: .3s
+		&:not(.pagination__item--active):hover
+			border-color: $orange
+		&--active
+			background-color: $orange
+		& + .pagination__item
+			margin-left: 10px
+
+// Wrapper
+
+.container
+	width: 100%
+	max-width: 1200px
+	min-width: 320px
+	margin: 0 auto
+	padding: 50px 15px
+
+.row
+	display: flex
+	justify-content: space-between
+
+.main
+	width: 870px
+
+.sidebar
+	width: 270px
+	min-width: 250px
+
+.menu-link
+	display: none
+
+// Cards holder
+
+.cards-holder
+	display: flex
+	justify-content: space-between
+	flex-wrap: wrap
+
+// Card
+
+.card
+	width: calc(100% / 3 - 15px)
+	position: relative
+	display: block
+	margin-bottom: 30px
+	background-color: $white
+	transition: .3s
+	&:hover
+		opacity: 0.7
+		box-shadow: 0 0 1px $gray
+		transform: translateY(-3px)
+	&__offers
+		position: absolute
+		top: 10px
+		left: 15px
+		right: 15px
+		display: flex
+	&__offer
+		padding: 3px 10px
+		border-radius: 4px
+		&:not(:last-child)
+			margin-right: 10px
+		&--class
+			background-color: $orange
+		&--credit
+			color: $white
+			background-color: $green
+	&__img
+		height: 200px
+		img
+			width: 100%
+			height: 100%
+			object-fit: cover
+	&__content
+		padding: 15px 15px 20px
+	&__title
+		font-size: 18px
+		font-weight: 700
+		line-height: 1.16
+	&__term
+	&__metro
+		position: relative
+		padding-left: 26px
+		&::before
+			content: ''
+			position: absolute
+			left: 0
+			top: 50%
+			transform: translateY(-50%)
+			display: block
+			width: 16px
+			height: 11px
+			background-image: url("../img/svg/metro.svg")
+	&__address
+		color: $gray
+	&__title,
+	&__term,
+	&__metro
+		margin-bottom: 10px
+
+// Button more
+
+.show-more-cards
+	display: flex
+	justify-content: center
+	align-items: center
+	width: 100%
+	border-radius: 4px
+	padding: 25px 15px 30px 15px
+	background-color: $dark-gray
+	cursor: pointer
+	border: none
+	transition: background-color .3s
+	&:hover
+		background-color: darken($dark-gray, 3%)
+	&__icon
+		margin-right: 12px
+	&__text
+		font-size: 18px
+		color: $blue
+
+// Sidebar
+
+.widget
+	& + .widget
+		margin-top: 30px
+	&__title
+		position: relative
+		font-size: 18px
+		font-weight: 700
+		margin-bottom: 30px
+		cursor: pointer
+		&.widget__title--active
+			&::after
+				transform: translateY(-50%) rotate(180deg)
+		&::after
+			content: ''
+			position: absolute
+			top: 50%
+			right: 0
+			transform: translateY(-50%)
+			display: block
+			width: 14px
+			height: 8px
+			background-image: url("../img/svg/chevron-up.svg")
+	&__body
+		transition: .3s
+		&--hidden
+			display: none
+
+// Distance to metro
+
+.distance-to-metro
+	&__row
+		display: flex
+		&:first-child
+			border-radius: 4px 4px 0 0
+			overflow: hidden
+			border: 1px solid #d6d6d6
+			border-bottom: none
+		&:last-child
+			border-radius: 0 0 4px 4px
+			overflow: hidden
+			border: 1px solid #d6d6d6
+	&__btn
+		flex-grow: 1
+		font-family: inherit
+		font-weight: 500
+		color: $light-black
+		padding: 0 15px
+		height: 50px
+		line-height: 50px
+		text-align: center
+		background-color: $white
+		cursor: pointer
+		transition: background-color .3s
+		&:hover
+			background-color: lighten($orange, 15%)
+	&__checkbox
+		width: 1px
+		height: 1px
+		position: absolute
+		opacity: 0
+		appearance: none
+		&:checked
+			& + .distance-to-metro__btn
+				background-color: $orange
+				&:hover
+					background-color: darken($orange, 10%)
+
+// Deadline
+
+.deadline
+	&__radio
+		display: flex
+		align-items: center
+		cursor: pointer
+		& + .deadline__radio
+			margin-top: 15px
+	&__real-radio
+		width: 1px
+		height: 1px
+		position: absolute
+		opacity: 0
+		appearance: none
+		&:checked
+			& + .deadline__fake-radio
+				background-color: #FFE074
+				&::after
+					opacity: 1
+			& ~ .deadline__title
+				font-weight: 500
+	&__fake-radio
+		position: relative
+		display: block
+		width: 20px
+		height: 20px
+		margin-right: 10px
+		border: 1px solid $gray
+		border-radius: 50%
+		background-color: $white
+		transition: background-color .2s
+		&::after
+			content: ''
+			position: absolute
+			top: 50%
+			left: 50%
+			transform: translate(-50%, -50%)
+			width: 8px
+			height: 8px
+			background-color: $light-black
+			border-radius: 50%
+			opacity: 0
+			transition: opacity .2s
+	&__title
+		display: block
+		font-size: 16px
+		color: $light-black
+
+// Add-options
+
+.add-options
+	margin-bottom: 30px
+	&__checkbox
+		display: flex
+		align-items: center
+		cursor: pointer
+		& + .add-options__checkbox
+			margin-top: 15px
+		&--hidden
+			display: none
+	&__real-checkbox
+		width: 1px
+		height: 1px
+		position: absolute
+		opacity: 0
+		appearance: none
+		&:checked
+			& + .add-options__fake-checkbox
+				background-color: #FFE074
+				&::after
+					opacity: 1
+			& ~ .add-options__title
+				font-weight: 500
+	&__fake-checkbox
+		position: relative
+		display: block
+		width: 20px
+		height: 20px
+		margin-right: 10px
+		border: 1px solid $gray
+		border-radius: 2px // Edited
+		background-color: $white
+		transition: background-color .2s
+		&::after
+			content: ''
+			position: absolute
+			top: 50%
+			left: 50%
+			transform: translate(-50%, -50%)
+			width: 18px // Edited
+			height: 18px // Edited
+			background-image: url("../img/svg/check.svg") // Added
+			background-position: center
+			background-color: none // Edited remove
+			border-radius: none // Edited remove
+			opacity: 0
+			transition: opacity .2s
+	&__title
+		display: block
+		font-size: 16px
+		color: $light-black
+	&__hidden
+		display: none
+		margin-top: 15px
+	&__show-more
+		font-size: 16px
+		color: $blue
+		padding: 0
+		background-color: transparent
+		border: none
+		cursor: pointer
+		&:hover
+			color: red
+
+// Services
+
+.services
+	&__checkbox
+		display: flex
+		align-items: center
+		cursor: pointer
+		& + .services__checkbox
+			margin-top: 15px
+	&__real-checkbox
+		width: 1px
+		height: 1px
+		position: absolute
+		opacity: 0
+		appearance: none
+		&:checked
+			& + .services__fake-checkbox
+				background-color: #FFE074
+				&::after
+					left: 17px
+					// opacity: 1
+			& ~ .services__title
+				font-weight: 500
+	&__fake-checkbox
+		position: relative
+		display: block
+		width: 37px // Edited
+		height: 20px
+		margin-right: 10px
+		border: 1px solid $gray
+		border-radius: 10px
+		background-color: #c4c4c4 // Edited
+		transition: background-color .2s
+		&::after
+			content: ''
+			position: absolute
+			top: 50%
+			left: 2px
+			transform: translateY(-50%) // Edited
+			width: 16px // Edited
+			height: 16px // Edited
+			background-color: $light-black
+			border-radius: 50%
+			// opacity: 0
+			transition: .2s
+	&__title
+		display: block
+		font-size: 16px
+		color: $light-black
+
+.form-btn
+	display: flex
+	justify-content: center
+	align-items: center
+	width: 100%
+	height: 50px
+	padding: 0 15px
+	border-radius: 4px
+	border: none
+	cursor: pointer
+	transition: .2s
+	& + .form-btn
+		margin-top: 10px
+	&--apply
+		background-color: $orange
+		&:hover
+			background-color: #f2bc00
+	&--reset
+		background-color: $white
+		border: 1px solid #D6D6D6
+		&:hover
+			background-color: #ddd
+	&__icon
+		margin-right: 8px
+	&__text
+		font-size: 16px
+		color: #3c3c3c
+
+
+@import "media.sass"

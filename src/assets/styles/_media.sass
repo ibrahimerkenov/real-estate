@@ -1,0 +1,142 @@
+/*==========  Desktop First  ==========*/
+
+/* Large Devices, Wide Screens */
+@media only screen and (max-width: 1200px)
+	.card
+		width: calc(100% / 2 - 15px)
+	.card__content
+		text-align: center
+	.card__metro
+		display: inline-block
+	.card__offers
+		justify-content: center
+	.main + .sidebar
+		margin-left: 30px
+
+
+/* Medium Devices, Desktops */
+@media only screen and (max-width: 992px)
+	.card
+		display: flex
+		width: 100%
+	.card__offers
+		left: 10px
+		right: auto
+	.card__img
+		width: 250px
+		height: 180px
+	.card__content
+		display: flex
+		flex-direction: column
+		align-items: center
+		justify-content: center
+		flex-grow: 1
+		padding: 10px
+
+/* Small Devices, Tablets */
+@media only screen and (max-width: 768px)
+	.card
+		display: block
+		width: calc(100% / 2 - 15px)
+	.card__offers
+		left: 50%
+		transform: translateX(-50%)
+		width: 100%
+		padding: 0 10px
+	.card__img
+		width: 100%
+		height: 250px
+	.card__content
+		align-items: flex-start
+		padding: 20px
+	.sidebar
+		position: fixed
+		top: 0
+		left: 0
+		bottom: 0
+		transform: translateX(-150%)
+		overflow-y: scroll
+		padding: 15px
+		background-color: $white
+		transition: transform .4s
+		&--active
+			transform: translateX(0%)
+	.main + .sidebar
+		margin-left: 0
+	.distance-to-metro__btn
+		padding: 0 10px
+	.menu-link
+		display: block
+		position: fixed
+		top: 10px
+		right: 10px
+		width: 40px
+		height: 40px
+		z-index: 12
+		outline: none
+		border: none
+		background-color: $light-black
+		span
+			display: block
+			width: 24px
+			height: 2px
+			background-color: $white
+			position: absolute
+			left: 50%
+			margin-left: -12px
+			top: 50%
+			margin-top: -1px
+			&:after
+				display: block
+				width: 24px
+				height: 2px
+				background-color: $white
+				position: absolute
+				left: 50%
+				margin-left: -12px
+				top: 50%
+				margin-top: -1px
+			&:before
+				display: block
+				width: 24px
+				height: 2px
+				background-color: $white
+				position: absolute
+				left: 50%
+				margin-left: -12px
+				top: 50%
+				margin-top: -1px
+				content: ''
+				margin-top: -12px
+				transition: all .3s ease
+			&:after
+				content: ''
+				margin-top: 10px
+				transition: all .3s ease
+		&--active
+			span
+				background-color: transparent
+				&:before
+					transform: rotate(135deg)
+					margin-top: 0
+				&:after
+					transform: rotate(-135deg)
+					margin-top: 0
+
+
+/* Extra Small Devices, Phones */
+@media only screen and (max-width: 600px)
+	.card
+		width: 100%
+	.container
+		max-width: 380px
+
+/* Extra Small Devices, Phones */
+@media only screen and (max-width: 480px)
+	.sidebar
+		right: 0
+		width: 100%
+
+/* Custom, iPhone Retina */
+@media only screen and (max-width: 320px)
+	/**/
